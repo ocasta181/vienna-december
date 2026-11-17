@@ -58,7 +58,8 @@ select.sort{background:var(--panel);border:1px solid var(--line);border-radius:9
 .chip.ghost{background:transparent}
 .days{overflow-x:auto;flex-wrap:nowrap;scrollbar-width:none;padding-bottom:2px}
 .days::-webkit-scrollbar{display:none}
-.day{flex-direction:column;gap:0;padding:5px 12px;line-height:1.15;border-radius:8px;min-width:54px}
+.day{flex-direction:column;gap:0;padding:5px 12px;line-height:1.15;border-radius:8px;min-width:64px}
+.chip.zero{opacity:.4}
 .day small{font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
 .day b{font-family:var(--serif);font-size:19px;font-weight:600}
 
@@ -210,24 +211,30 @@ const KEY = {
   date:e=>e.day*10000 + +e.time.replace(":",""), time:e=>e.time, dur:e=>e.mins, fit:e=>e.fit,
 };
 
+const matchQ = e => { const q = norm(state.q).trim(); return !q || q.split(/\s+/).every(w => norm(e.title+" "+e.venue+" "+e.cat).includes(w)); };
+const matchCat = e => !state.cats.size || state.cats.has(e.cat);
+const matchDay = e => !state.days.size || state.days.has(e.day);
+
 function renderCats(){
-  const n = c => EVENTS.filter(e=>e.cat===c).length;
+  const pool = EVENTS.filter(e => matchQ(e) && matchDay(e));
+  const n = c => pool.filter(e=>e.cat===c).length;
   $("#cats").innerHTML = `<span class="label">Type</span>` +
-    `<button class="chip" data-cat="" aria-pressed="${!state.cats.size}">All <span class="n">${EVENTS.length}</span></button>` +
-    CATS.map(c=>`<button class="chip" data-cat="${c}" style="--c:var(--${c})" aria-pressed="${state.cats.has(c)}"><span class="dot"></span>${c[0].toUpperCase()+c.slice(1)} <span class="n">${n(c)}</span></button>`).join("");
+    `<button class="chip" data-cat="" aria-pressed="${!state.cats.size}">All <span class="n">${pool.length}</span></button>` +
+    CATS.map(c=>`<button class="chip${n(c)?"":" zero"}" data-cat="${c}" style="--c:var(--${c})" aria-pressed="${state.cats.has(c)}"><span class="dot"></span>${c[0].toUpperCase()+c.slice(1)} <span class="n">${n(c)}</span></button>`).join("");
 }
 function renderDays(){
+  const pool = EVENTS.filter(e => matchQ(e) && matchCat(e));
   const days = [...new Set(EVENTS.map(e=>e.day))];
+  const n = d => pool.filter(e=>e.day===d).length;
   $("#days").innerHTML = `<span class="label">Day</span>` +
-    `<button class="chip day" data-day="" aria-pressed="${!state.days.size}"><small>All</small><b>${days.length}</b></button>` +
-    days.map(d=>`<button class="chip day" data-day="${d}" aria-pressed="${state.days.has(d)}"><small>${DOW(d)}</small><b>${d}</b></button>`).join("");
+    `<button class="chip day" data-day="" aria-pressed="${!state.days.size}"><small>All</small><b>${pool.length}</b></button>` +
+    days.map(d=>`<button class="chip day${n(d)?"":" zero"}" data-day="${d}" aria-pressed="${state.days.has(d)}"><small>${DOW(d)} ${d}</small><b>${n(d)}</b></button>`).join("");
 }
 
 function render(){
   const k = KEY[state.sort], tie = KEY.date;
-  const q = norm(state.q).trim();
-  const list = EVENTS.filter(e => (!state.cats.size || state.cats.has(e.cat)) && (!state.days.size || state.days.has(e.day)) &&
-      (!q || q.split(/\s+/).every(w => norm(e.title+" "+e.venue+" "+e.cat).includes(w))))
+  renderCats(); renderDays();
+  const list = EVENTS.filter(e => matchQ(e) && matchCat(e) && matchDay(e))
     .sort((a,b) => {
       const x=k(a), y=k(b);
       if(x===Infinity || y===Infinity) return x===y ? tie(a)-tie(b) : x===Infinity ? 1 : -1;
@@ -257,7 +264,7 @@ $("#cats").addEventListener("click", e => {
   const b = e.target.closest("[data-cat]"); if(!b) return;
   const c = b.dataset.cat;
   if(!c) state.cats.clear(); else state.cats.has(c) ? state.cats.delete(c) : state.cats.add(c);
-  renderCats(); render();
+  render();
 });
 document.querySelectorAll("th[data-key] button").forEach(b => b.addEventListener("click", () => {
   const k = b.parentElement.dataset.key;
@@ -269,12 +276,12 @@ $("#days").addEventListener("click", e => {
   const b = e.target.closest("[data-day]"); if(!b) return;
   const d = +b.dataset.day;
   if(!d) state.days.clear(); else state.days.has(d) ? state.days.delete(d) : state.days.add(d);
-  renderDays(); render();
+  render();
 });
 $("#q").addEventListener("input", e => { state.q = e.target.value; render(); });
 $("#sortSel").addEventListener("change", e => { const [k,d] = e.target.value.split(":"); state.sort = k; state.dir = d==="asc"?1:-1; render(); });
 
-renderCats(); renderDays(); render();
+render();
 </script>
 </body>
 </html>
