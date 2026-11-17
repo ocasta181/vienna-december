@@ -3,59 +3,41 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Vienna in December</title>
-<meta name="description" content="Concerts, opera, ballet and dances in Vienna, 12 to 20 December 2026. Pick your evenings and share a shortlist with the group.">
-<meta property="og:title" content="Vienna in December">
-<meta property="og:description" content="Concerts, opera, ballet and dances, 12 to 20 December. Pick your evenings.">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%23121a24'/%3E%3Cpath d='M16 4 L20 26 H12 Z' fill='none' stroke='%23c9a464' stroke-width='2'/%3E%3C/svg%3E">
+<title>Vienna, December 2026</title>
+<meta name="description" content="Concerts, opera, ballet and dances in Vienna, 12 to 20 December 2026.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
 :root{
-  --ink:#0e141c;
-  --panel:#141c27;
   --panel-2:#1a2431;
-  --line:#263243;
-  --text:#ebe4d6;
-  --muted:#9aa3ad;
-  --brass:#c9a464;
   --brass-dim:#8a7346;
   --concert:#c9a464;
   --opera:#d47a68;
   --ballet:#8eaccf;
   --dance:#8fb79b;
-  --radius:10px;
+  --ink:#0e141c;
+  --panel:#141c27;
+  --line:#263243;
+  --row:#1d2734;
+  --text:#ebe4d6;
+  --muted:#9aa3ad;
+  --brass:#c9a464;
   --serif:"Cormorant Garamond",Georgia,serif;
   --sans:"Inter",system-ui,-apple-system,sans-serif;
 }
 *{box-sizing:border-box}
-html{-webkit-text-size-adjust:100%}
-body{margin:0;font-variant-numeric:lining-nums;background:var(--ink);color:var(--text);font:15px/1.5 var(--sans);-webkit-font-smoothing:antialiased}
+body{margin:0;background:var(--ink);color:var(--text);font:15px/1.5 var(--sans);-webkit-font-smoothing:antialiased}
 a{color:inherit}
-button{font:inherit;color:inherit}
+button,select,input{font:inherit;color:inherit}
 
-/* ---------- Hero ---------- */
-.hero{position:relative;overflow:hidden;background:
-  radial-gradient(1200px 500px at 70% -10%, #22324a 0%, transparent 60%),
-  linear-gradient(180deg,#101925 0%, #0e141c 100%);
-  border-bottom:1px solid var(--line)}
-.hero-inner{max-width:1180px;margin:0 auto;padding:64px 24px 0;position:relative;z-index:2}
-.eyebrow{font-size:12px;letter-spacing:.22em;text-transform:uppercase;color:var(--brass)}
-h1{font-family:var(--serif);font-weight:500;font-size:clamp(44px,7vw,84px);line-height:1;margin:14px 0 14px;letter-spacing:-.01em}
-h1 em{color:var(--brass);font-style:italic}
-.lede{max-width:560px;color:var(--muted);font-size:16px;margin:0}
-.stats{display:flex;gap:28px;margin:28px 0 0;flex-wrap:wrap}
-.stat b{display:block;font-family:var(--serif);font-size:30px;font-weight:600;color:var(--text);line-height:1}
-.stat span{font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
-.skyline{display:block;width:100%;height:auto;margin-top:8px;position:relative;z-index:1}
-.skyline .st{fill:none;stroke:var(--brass);stroke-width:1.4;stroke-linejoin:round;stroke-linecap:round}
-.skyline .bg{fill:none;stroke:#3a4a60;stroke-width:1.1}
-.skyline .fill{fill:#0e141c}
-.skyline .win{fill:#e9c77d;opacity:.55}
-.skyline .star{fill:#ebe4d6}
+.hero{position:relative;min-height:min(72vh,680px);display:flex;align-items:flex-end;
+  background:linear-gradient(180deg,rgba(14,20,28,.15) 0%,rgba(14,20,28,0) 35%,rgba(14,20,28,.55) 75%,var(--ink) 100%),
+  url("img/rathaus.jpg") center 30%/cover no-repeat;border-bottom:1px solid var(--line)}
+.hero-inner{max-width:1180px;width:100%;margin:0 auto;padding:0 24px 40px}
+.eyebrow{text-shadow:0 1px 8px rgba(0,0,0,.6);font-size:12px;letter-spacing:.22em;text-transform:uppercase;color:var(--brass)}
+h1{font-family:var(--serif);font-weight:500;text-shadow:0 2px 24px rgba(0,0,0,.5);font-size:clamp(44px,7vw,80px);line-height:1;margin:14px 0 0}
 
-/* ---------- Layout ---------- */
 main{max-width:1180px;margin:0 auto;padding:28px 24px 80px}
 .controls{position:sticky;top:0;z-index:20;background:rgba(14,20,28,.92);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);
   margin:0 -24px;padding:16px 24px 14px;border-bottom:1px solid var(--line)}
@@ -80,193 +62,46 @@ select.sort{background:var(--panel);border:1px solid var(--line);border-radius:9
 .day small{font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
 .day b{font-family:var(--serif);font-size:19px;font-weight:600}
 
-/* ---------- Shortlist bar ---------- */
-.banner{display:none;margin:16px 0 0;padding:12px 16px;border:1px solid var(--brass-dim);border-radius:var(--radius);background:#1b1a17;align-items:center;gap:12px;flex-wrap:wrap}
-.banner.show{display:flex}
-.btn{border:1px solid var(--line);background:var(--panel);border-radius:999px;padding:7px 14px;font-size:13px;cursor:pointer}
-.btn:hover{border-color:var(--brass-dim)}
-.btn.primary{background:var(--brass);border-color:var(--brass);color:#16120a;font-weight:600}
-.btn.primary:hover{background:#d6b375}
 
-.meta{display:flex;justify-content:space-between;align-items:center;margin:20px 0 10px;color:var(--muted);font-size:13px;gap:12px;flex-wrap:wrap}
+@media (max-width:900px){.controls{position:static;margin:0 -16px;padding:12px 16px}}
+.cat{--c:var(--muted)}
 
-/* ---------- Table ---------- */
-table{width:100%;border-collapse:separate;border-spacing:0}
-thead th{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);font-weight:500;text-align:left;padding:10px 12px;border-bottom:1px solid var(--line);white-space:nowrap}
-th button{all:unset;cursor:pointer;display:inline-flex;align-items:center;gap:6px}
+table{width:100%;border-collapse:collapse}
+thead th{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);font-weight:500;text-align:left;padding:10px 10px;border-bottom:1px solid var(--line);white-space:nowrap}
+thead th:first-child{width:30%}
+th button{all:unset;cursor:pointer}
 th button:focus-visible{outline:1px solid var(--brass);outline-offset:3px}
-th .arrow{opacity:.35;font-size:10px}
-th[aria-sort="ascending"] .arrow,th[aria-sort="descending"] .arrow{opacity:1;color:var(--brass)}
-tbody td{padding:14px 12px;border-bottom:1px solid #1d2734;vertical-align:middle}
-tbody tr{transition:background .12s}
-tbody tr:hover{background:#121a24}
-tbody tr.picked{background:linear-gradient(90deg,rgba(201,164,100,.09),transparent 60%)}
-tr.daybreak td{padding:22px 12px 8px;border-bottom:1px solid var(--line);background:transparent}
-tr.daybreak:hover{background:transparent}
-.dayhead{font-family:var(--serif);font-size:22px;font-weight:600}
-.dayhead span{font-family:var(--sans);font-size:12px;color:var(--muted);letter-spacing:.06em;margin-left:10px;font-weight:400}
+th .arrow{display:inline-block;width:10px;margin-left:4px;color:var(--brass);font-size:9px}
+tbody td{padding:14px 10px;border-bottom:1px solid var(--row);vertical-align:middle}
+.title{font-family:var(--serif);font-size:20px;font-weight:600;line-height:1.2;text-decoration:none}
+.title:hover{color:var(--brass)}
+.venue{color:var(--muted);text-decoration:none;border-bottom:1px dotted #46525f}
+.venue:hover{color:var(--text)}
+.cat{font-size:12px;padding:3px 10px;border-radius:999px;border:1px solid var(--line);color:var(--muted);text-transform:capitalize;white-space:nowrap}
+.nw{white-space:nowrap;font-variant-numeric:tabular-nums}
 
-.star{all:unset;cursor:pointer;width:30px;height:30px;display:grid;place-items:center;border-radius:50%;color:#56616e;font-size:18px}
-.star:hover{color:var(--brass);background:#1b2430}
-.star[aria-pressed="true"]{color:var(--brass)}
-.star:focus-visible{outline:1px solid var(--brass)}
-.when b{font-weight:600}
-.when small{display:block;color:var(--muted);font-size:12px}
-.ev a.title{font-family:var(--serif);font-size:20px;font-weight:600;line-height:1.2;text-decoration:none}
-.ev a.title:hover{color:var(--brass)}
-.ev a.title::after{content:" ↗";font-family:var(--sans);font-size:12px;color:var(--muted)}
-.ev .venue{display:inline-block;margin-top:3px;font-size:13px;color:var(--muted);text-decoration:none;border-bottom:1px dotted #46525f}
-.ev .venue:hover{color:var(--text)}
-.cat{display:inline-flex;align-items:center;gap:6px;font-size:12px;padding:3px 10px;border-radius:999px;border:1px solid color-mix(in srgb,var(--c) 45%,transparent);color:var(--c);background:color-mix(in srgb,var(--c) 10%,transparent);text-transform:capitalize}
-.cost{font-variant-numeric:tabular-nums;white-space:nowrap}
-.cost.tba{color:var(--muted);font-style:italic}
-.dur{white-space:nowrap;font-variant-numeric:tabular-nums}
-.fit{display:flex;align-items:center;gap:8px;white-space:nowrap}
-.fit b{font-size:15px;font-weight:600;min-width:20px;text-align:right;font-variant-numeric:tabular-nums}
-.bar{width:64px;height:4px;background:#243041;border-radius:2px;overflow:hidden}
-.bar i{display:block;height:100%;background:var(--brass);border-radius:2px}
-.empty{padding:60px 0;text-align:center;color:var(--muted)}
-.num{text-align:right}
-th.num button{justify-content:flex-end}
-
-footer{max-width:1180px;margin:0 auto;padding:0 24px 48px;color:#69737e;font-size:12px}
-
-.toast{position:fixed;left:50%;bottom:24px;transform:translateX(-50%) translateY(20px);background:var(--brass);color:#16120a;padding:10px 18px;border-radius:999px;font-weight:600;font-size:13px;opacity:0;pointer-events:none;transition:all .25s;z-index:50}
-.toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
-
-/* ---------- Mobile cards ---------- */
-@media (max-width:760px){
-  .hero-inner{padding:40px 16px 0}
+@media (max-width:900px){
+  .hero{min-height:56vh}
+  .hero-inner{padding:0 16px 28px}
   main{padding:20px 16px 60px}
-  .controls{position:static;margin:0 -16px;padding:12px 16px}
-  footer{padding:0 16px 40px}
-  .stats{gap:20px}
   thead{display:none}
   table,tbody,tr,td{display:block;width:100%}
-  tbody tr{position:relative;border-bottom:1px solid #1d2734;padding:14px 0 14px 40px;display:grid;grid-template-columns:1fr auto;gap:6px 12px}
+  tbody tr{border-bottom:1px solid var(--row);padding:14px 0;display:grid;grid-template-columns:1fr auto;gap:4px 12px}
   tbody td{border:0;padding:0}
-  tr.daybreak{padding:22px 0 6px;display:block;border-bottom:1px solid var(--line)}
-  tr.daybreak td{padding:0;border:0}
-  td.c-star{position:absolute;left:0;top:10px;width:auto}
-  td.c-ev{grid-column:1 / -1;order:1}
-  td.c-when{order:2}
-  td.c-cat{order:3;text-align:right}
-  td.c-cost{order:4}
-  td.c-dur{order:5;text-align:right;color:var(--muted)}
-  td.c-fit{order:6;grid-column:1 / -1}
-  .ev a.title{font-size:19px}
-  .when{display:flex;gap:8px;align-items:baseline}
-  .when small{display:inline}
-  td.c-cost::before{content:"From ";color:var(--muted);font-size:12px}
-  td.c-cost.na::before{content:""}
-  td.c-fit .fit::before{content:"Fit";font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-right:2px}
-  .bar{flex:1;max-width:160px}
+  td.c-ev{grid-column:1 / -1}
+  td.c-ven{grid-column:1 / -1;margin-bottom:4px}
+  td.c-cat,td.c-cost,td.c-fit{text-align:right}
 }
-@media (prefers-reduced-motion:reduce){*{transition:none!important}}
 </style>
 </head>
 <body>
 
-<header class="hero">
+<!-- Photo: "Rathaus Christkindlmarkt" by Max Pfandl, CC BY 2.0 (https://creativecommons.org/licenses/by/2.0), via Wikimedia Commons -->
+<header class="hero" role="img" aria-label="Vienna City Hall and Christmas market in snow at dusk" title="Photo: Max Pfandl, CC BY 2.0">
   <div class="hero-inner">
-    <div class="eyebrow">Vienna &nbsp;·&nbsp; 12 – 20 December 2026</div>
-    <h1>A week of <em>music</em><br>&amp; dancing</h1>
-    <p class="lede">Concerts, opera, ballet and a few proper balls. Star the evenings you're in for, then send your shortlist to the group.</p>
-    <div class="stats" id="stats"></div>
+    <div class="eyebrow">12 – 20 December 2026</div>
+    <h1>Vienna</h1>
   </div>
-
-  <svg class="skyline" viewBox="0 0 1200 260" preserveAspectRatio="xMidYMax slice" aria-hidden="true">
-    <!-- stars -->
-    <g class="star">
-      <circle cx="80" cy="40" r="1"/><circle cx="190" cy="22" r="1.2"/><circle cx="340" cy="60" r=".9"/>
-      <circle cx="430" cy="18" r="1"/><circle cx="640" cy="30" r="1.1"/><circle cx="760" cy="62" r=".8"/>
-      <circle cx="900" cy="24" r="1.2"/><circle cx="1150" cy="48" r="1"/><circle cx="1010" cy="12" r=".8"/>
-    </g>
-    <!-- moon -->
-    <path d="M1128 40 a18 18 0 1 0 14 30 a14 14 0 1 1 -14 -30 z" fill="#ebe4d6" opacity=".85"/>
-
-    <!-- distant rooftops -->
-    <path class="bg" d="M0 222 L20 222 L20 206 L34 196 L48 206 L48 222 L70 222 L70 200 L96 200 L96 222 L118 222 L118 210 L130 198 L142 210 L142 222 L170 222 L170 204 L196 204 L196 222
-      L380 222 L380 206 L392 194 L404 206 L404 222 L430 222 L430 208 L462 208 L462 222
-      L740 222 L740 204 L752 192 L764 204 L764 222 L790 222 L790 210 L818 210 L818 222
-      L930 222 L930 206 L960 206 L960 222 L1200 222"/>
-
-    <!-- Karlskirche -->
-    <g>
-      <path class="fill st" d="M210 236 L210 168 L226 168 L226 236 Z"/>
-      <path class="st" d="M212 176 L224 176 M212 186 L224 186 M212 196 L224 196 M212 206 L224 206 M212 216 L224 216 M212 226 L224 226"/>
-      <path class="fill st" d="M206 168 L230 168 L230 162 L206 162 Z M212 162 L218 150 L224 162"/>
-      <path class="fill st" d="M324 236 L324 168 L340 168 L340 236 Z"/>
-      <path class="st" d="M326 176 L338 176 M326 186 L338 186 M326 196 L338 196 M326 206 L338 206 M326 216 L338 216 M326 226 L338 226"/>
-      <path class="fill st" d="M320 168 L344 168 L344 162 L320 162 Z M326 162 L332 150 L338 162"/>
-      <path class="fill st" d="M240 236 L240 176 L310 176 L310 236 Z"/>
-      <path class="fill st" d="M246 176 L246 160 L304 160 L304 176"/>
-      <path class="fill st" d="M250 160 Q275 104 300 160 Z"/>
-      <path class="st" d="M262 160 Q275 120 288 160 M275 113 L275 160"/>
-      <path class="fill st" d="M271 113 L271 102 L279 102 L279 113 M275 102 L275 92 M271 96 L279 96"/>
-      <path class="fill st" d="M252 236 L252 206 L298 206 L298 236 M246 206 L275 186 L304 206 Z"/>
-      <path class="st" d="M262 236 L262 212 M275 236 L275 212 M288 236 L288 212"/>
-    </g>
-
-    <!-- Stephansdom -->
-    <g>
-      <!-- roof -->
-      <path class="fill st" d="M560 236 L560 176 L700 176 L700 236 Z"/>
-      <path class="fill st" d="M556 176 L578 128 L688 128 L704 176 Z"/>
-      <path class="st" opacity=".7" d="M572 164 L584 152 L596 164 L608 152 L620 164 L632 152 L644 164 L656 152 L668 164 L680 152 L692 164
-        M580 146 L592 136 L604 146 L616 136 L628 146 L640 136 L652 146 L664 136 L676 146 L686 138"/>
-      <path class="st" d="M576 236 L576 200 Q582 190 588 200 L588 236 M640 236 L640 200 Q646 190 652 200 L652 236"/>
-      <!-- north tower stub -->
-      <path class="fill st" d="M690 236 L690 150 L718 150 L718 236 Z"/>
-      <path class="fill st" d="M694 150 Q704 128 714 150 Z M704 132 L704 118"/>
-      <!-- south tower and spire -->
-      <path class="fill st" d="M516 236 L516 150 L556 150 L556 236 Z"/>
-      <path class="fill st" d="M518 150 L536 22 L554 150 Z"/>
-      <path class="st" d="M522 122 L550 122 M526 94 L546 94 M529 68 L543 68 M532 46 L540 46"/>
-      <path class="st" d="M520 136 L516 128 M552 136 L556 128 M524 108 L520 100 M548 108 L552 100 M528 80 L524 72 M544 80 L548 72"/>
-      <path class="st" d="M536 22 L536 12 M532 16 L540 16"/>
-      <path class="st" d="M528 236 L528 196 Q536 182 544 196 L544 236 M524 172 L548 172 M528 160 Q536 152 544 160"/>
-    </g>
-
-    <!-- State Opera -->
-    <g>
-      <path class="fill st" d="M772 236 L772 196 L900 196 L900 236 Z"/>
-      <path class="fill st" d="M766 196 L786 176 L886 176 L906 196 Z"/>
-      <path class="fill st" d="M806 176 L816 160 L856 160 L866 176"/>
-      <path class="st" d="M784 236 L784 216 Q790 206 796 216 L796 236 M804 236 L804 216 Q810 206 816 216 L816 236
-        M824 236 L824 216 Q830 206 836 216 L836 236 M844 236 L844 216 Q850 206 856 216 L856 236
-        M864 236 L864 216 Q870 206 876 216 L876 236 M780 204 L892 204"/>
-      <rect class="win" x="788" y="183" width="5" height="7"/><rect class="win" x="808" y="183" width="5" height="7"/>
-      <rect class="win" x="828" y="183" width="5" height="7"/><rect class="win" x="848" y="183" width="5" height="7"/>
-      <rect class="win" x="868" y="183" width="5" height="7"/>
-    </g>
-
-    <!-- Riesenrad -->
-    <g>
-      <circle class="st" cx="1040" cy="150" r="66"/>
-      <circle class="st" cx="1040" cy="150" r="58" opacity=".5"/>
-      <circle class="st" cx="1040" cy="150" r="5"/>
-      <path class="st" opacity=".6" d="M1040 84 L1040 216 M974 150 L1106 150 M993 103 L1087 197 M1087 103 L993 197
-        M1015 89 L1065 211 M1065 89 L1015 211 M979 125 L1101 175 M979 175 L1101 125"/>
-      <path class="st" d="M1040 150 L1004 236 M1040 150 L1076 236 M1016 206 L1064 206"/>
-      <g class="fill st">
-        <rect x="1035" y="80" width="10" height="8" rx="1.5"/><rect x="1035" y="212" width="10" height="8" rx="1.5"/>
-        <rect x="970" y="146" width="10" height="8" rx="1.5"/><rect x="1100" y="146" width="10" height="8" rx="1.5"/>
-        <rect x="988" y="99" width="10" height="8" rx="1.5"/><rect x="1082" y="99" width="10" height="8" rx="1.5"/>
-        <rect x="988" y="193" width="10" height="8" rx="1.5"/><rect x="1082" y="193" width="10" height="8" rx="1.5"/>
-      </g>
-    </g>
-
-    <!-- foreground: street line & lamps -->
-    <path class="st" d="M0 236 L1200 236"/>
-    <g class="st">
-      <path d="M120 236 L120 196 M114 196 L126 196 L123 186 L117 186 Z"/>
-      <path d="M440 236 L440 196 M434 196 L446 196 L443 186 L437 186 Z"/>
-      <path d="M940 236 L940 196 M934 196 L946 196 L943 186 L937 186 Z"/>
-    </g>
-    <g class="win"><circle cx="120" cy="191" r="3"/><circle cx="440" cy="191" r="3"/><circle cx="940" cy="191" r="3"/></g>
-    <rect x="0" y="236" width="1200" height="24" fill="#0e141c"/>
-  </svg>
 </header>
 
 <main>
@@ -284,42 +119,23 @@ footer{max-width:1180px;margin:0 auto;padding:0 24px 48px;color:#69737e;font-siz
     <div class="row" id="cats"></div>
     <div class="row days" id="days"></div>
   </div>
-
-  <div class="banner" id="sharedBanner">
-    <span id="sharedText"></span>
-    <span style="flex:1"></span>
-    <button class="btn" id="sharedView">Show only these</button>
-    <button class="btn" id="sharedMerge">Add to my shortlist</button>
-    <button class="btn" id="sharedDismiss">Dismiss</button>
-  </div>
-
-  <div class="meta">
-    <span id="count"></span>
-    <span class="row">
-      <button class="chip ghost" id="onlyPicked" aria-pressed="false">★ My shortlist <span class="n" id="pickN">0</span></button>
-      <button class="btn primary" id="share">Copy shortlist link</button>
-    </span>
-  </div>
-
+  <div style="height:16px"></div>
   <table>
     <thead>
       <tr>
-        <th style="width:44px"><span class="sr" aria-label="Shortlist"></span></th>
-        <th data-key="date" aria-sort="ascending"><button>When <span class="arrow">▲</span></button></th>
-        <th data-key="title"><button>Event <span class="arrow">▲</span></button></th>
-        <th data-key="cat"><button>Type <span class="arrow">▲</span></button></th>
-        <th data-key="cost"><button>Tickets <span class="arrow">▲</span></button></th>
-        <th data-key="dur"><button>Length <span class="arrow">▲</span></button></th>
-        <th data-key="fit"><button>Fit <span class="arrow">▲</span></button></th>
+        <th data-key="title"><button>Event<span class="arrow"></span></button></th>
+        <th data-key="cat"><button>Category<span class="arrow"></span></button></th>
+        <th data-key="venue"><button>Venue<span class="arrow"></span></button></th>
+        <th data-key="cost"><button>Cost (USD)<span class="arrow"></span></button></th>
+        <th data-key="date"><button>Date<span class="arrow"></span></button></th>
+        <th data-key="time"><button>Time<span class="arrow"></span></button></th>
+        <th data-key="dur"><button>Duration<span class="arrow"></span></button></th>
+        <th data-key="fit"><button>Fit<span class="arrow"></span></button></th>
       </tr>
     </thead>
     <tbody id="rows"></tbody>
   </table>
-  <div class="empty" id="empty" hidden>Nothing matches. <button class="btn" id="reset">Clear filters</button></div>
 </main>
-
-<footer>Ticket prices are approximate USD ranges from the box offices. Fit is our 1 to 10 rating for this group. Event links go to the official ticket pages; venue names open Google Maps.</footer>
-<div class="toast" id="toast"></div>
 
 <script>
 const M = q => "https://www.google.com/maps/search/?api=1&query=" + q;
@@ -337,217 +153,122 @@ const MV = id => "https://shop.musikverein.at/selection/event/seat?perfId=" + id
 const WO = id => "https://wotanzen.at/veranstaltung/details/" + id;
 const SO = (slug, d) => `https://www.wiener-staatsoper.at/en/calendar/detail/${slug}/2026-12-${d}/`;
 
-// [title, url, category, venue, costMin, costMax, day, time, duration, about, fit]
+// [title, url, category, venue, cost, date, time, duration, fit]
 const RAW = [
- ["Vienna Philharmonic, Britten War Requiem", MV("10229728116903"), "concert","mv",13,218,12,"15:30","1h30",0,10],
- ["Perfektion practice evening, Tanzschule Prof. Wagner", WO(98654), "dance","wag",9,9,12,"18:00","3h",0,7],
- ["Weihnachtsball, Klosterneuburg", "https://www.antanzen.at/weihnachtsball/", "dance","bab",40,51,12,"19:30","7h30",0,9],
- ["Vienna Symphony, Elim Chan, Leif Ove Andsnes", MV("10229683392105"), "concert","mv",13,147,12,"19:30","2h",0,8],
- ["Orchester Wiener Akademie, Haselböck", MV("10229691933778"), "concert","mv",13,99,13,"15:30","2h",0,7],
- ["Perfektion practice evening, Tanzschule Prof. Wagner", WO(98616), "dance","wag",9,9,13,"18:00","2h",0,6],
- ["Musikverein Orchesterverein", MV("10229763935548"), "concert","mv",10,64,13,"19:30","2h",0,5],
- ["Onegin", SO("onegin",14), "ballet","sto",15,228,14,"20:00","2h15",0,7],
- ["Tanzcafé, Tanzschule Wopienka", WO(98705), "dance","wop",9,9,15,"16:00","2h",0,5],
- ["Die Zauberflöte (The Magic Flute)", SO("die-zauberfloete",15), "opera","sto",21,292,15,"18:30","3h15",0,8],
- ["Christmas at the Musikverein, Cappella Istropolitana", MV("10229753219045"), "concert","mv",22,131,15,"19:30","2h30",0,6],
- ["Anne-Sophie Mutter with Soltani and Rana", MV("10229710774000"), "concert","mv",13,154,16,"19:30","2h",0,9],
- ["Onegin", SO("onegin",16), "ballet","sto",15,228,16,"20:00","2h15",0,7],
- ["La Damnation de Faust (premiere)", SO("la-damnation-de-faust",17), "opera","sto",21,338,17,"19:00","3h",0,8],
- ["Mahler Symphony No. 3, UNICEF (United Nations Children's Fund) benefit", MV("10229869075030"), "concert","mv",11,132,17,"19:30","1h45",0,8],
- ["Vienna Philharmonic, Mäkelä, Rite of Spring", "https://www.wienerphilharmoniker.at/en/konzerte/concert-in-the-wiener-konzerthaus/10918/", "concert","kh",null,null,18,"19:30","1h30",1,10],
- ["Tonkünstler Orchestra, Jussen brothers", MV("10229765577505"), "concert","mv",10,74,18,"19:30","1h45",0,7],
- ["Vienna Mozart Orchestra", MV("10229820722512"), "concert","mv",76,153,18,"20:15","1h50",0,5],
- ["Kekserlduft & Kerzenschein, Casino Baden", "https://www.city-dancing.at/termin/casino_2612.html", "dance","cas",44,44,19,"18:30","5h",1,8],
- ["Handel, Arnold Schoenberg Choir", MV("10229753141708"), "concert","mv",13,149,19,"19:00","3h10",0,9],
- ["Dancenight, Tanzschule Wopienka", WO(98723), "dance","wop",null,null,19,"19:00","3h",0,6],
- ["Camerata Classica, Four Seasons", MV("10229821419109"), "concert","mv",17,91,19,"20:00","2h",0,5],
- ["Ausgerechnet Weihnachten, Fritz Karl with Sonare Quartet", MV("10229733502928"), "concert","mv",9,41,19,"20:00","2h",0,4],
- ["Vienna Boys Choir, Sunday Mass", "https://www.viennaclassic.com/en/vienna/concert/vienna-boys-choir-at-hofmusikkapelle/z16P9MKr", "concert","hbk",61,80,20,"09:15","2h",1,8],
- ["Tonkünstler Orchestra, Jussen brothers (matinee)", MV("10229765572652"), "concert","mv",10,74,20,"15:30","1h45",0,7],
- ["Bach Christmas Oratorio, Vienna Symphony", "https://konzerthaus.at/en/program-and-tickets/wiener-symphoniker-wiener-singakademie-de-marchi/63698", "concert","kh",8,143,20,"19:00","1h50",0,9],
- ["Vienna Philharmonic ensemble, Bruckner and Brahms", MV("10229719673110"), "concert","mv",13,77,20,"19:30","2h",0,9],
- ["St. Augustin Choir and Orchestra, Mozart and Rheinberger", MV("10229789927223"), "concert","mv",22,98,20,"19:30","2h",0,6],
- ["Chopin Gala, Pietro Massa", MV("10229863760510"), "concert","mv",11,39,20,"19:30","2h30",0,5],
+ ["Vienna Philharmonic, Britten War Requiem", MV("10229728116903"), "concert","mv","$13 to $218","Sat Dec 12","15:30","1h30",10],
+ ["Perfektion practice evening, Tanzschule Prof. Wagner", WO(98654), "dance","wag","$9","Sat Dec 12","18:00","3h",7],
+ ["Weihnachtsball, Klosterneuburg", "https://www.antanzen.at/weihnachtsball/", "dance","bab","$40 to $51","Sat Dec 12","19:30","7h30",9],
+ ["Vienna Symphony, Elim Chan, Leif Ove Andsnes", MV("10229683392105"), "concert","mv","$13 to $147","Sat Dec 12","19:30","2h",8],
+ ["Orchester Wiener Akademie, Haselböck", MV("10229691933778"), "concert","mv","$13 to $99","Sun Dec 13","15:30","2h",7],
+ ["Perfektion practice evening, Tanzschule Prof. Wagner", WO(98616), "dance","wag","$9","Sun Dec 13","18:00","2h",6],
+ ["Musikverein Orchesterverein", MV("10229763935548"), "concert","mv","$10 to $64","Sun Dec 13","19:30","2h",5],
+ ["Onegin", SO("onegin",14), "ballet","sto","$15 to $228","Mon Dec 14","20:00","2h15",7],
+ ["Tanzcafé, Tanzschule Wopienka", WO(98705), "dance","wop","$9","Tue Dec 15","16:00","2h",5],
+ ["Die Zauberflöte (The Magic Flute)", SO("die-zauberfloete",15), "opera","sto","$21 to $292","Tue Dec 15","18:30","3h15",8],
+ ["Christmas at the Musikverein, Cappella Istropolitana", MV("10229753219045"), "concert","mv","$22 to $131","Tue Dec 15","19:30","2h30",6],
+ ["Anne-Sophie Mutter with Soltani and Rana", MV("10229710774000"), "concert","mv","$13 to $154","Wed Dec 16","19:30","2h",9],
+ ["Onegin", SO("onegin",16), "ballet","sto","$15 to $228","Wed Dec 16","20:00","2h15",7],
+ ["La Damnation de Faust (premiere)", SO("la-damnation-de-faust",17), "opera","sto","$21 to $338","Thu Dec 17","19:00","3h",8],
+ ["Mahler Symphony No. 3, UNICEF (United Nations Children's Fund) benefit", MV("10229869075030"), "concert","mv","$11 to $132","Thu Dec 17","19:30","1h45",8],
+ ["Vienna Philharmonic, Mäkelä, Rite of Spring", "https://www.wienerphilharmoniker.at/en/konzerte/concert-in-the-wiener-konzerthaus/10918/", "concert","kh","","Fri Dec 18","19:30","about 1h30",10],
+ ["Tonkünstler Orchestra, Jussen brothers", MV("10229765577505"), "concert","mv","$10 to $74","Fri Dec 18","19:30","1h45",7],
+ ["Vienna Mozart Orchestra", MV("10229820722512"), "concert","mv","$76 to $153","Fri Dec 18","20:15","1h50",5],
+ ["Kekserlduft & Kerzenschein, Casino Baden", "https://www.city-dancing.at/termin/casino_2612.html", "dance","cas","$44","Sat Dec 19","18:30","about 5h",8],
+ ["Handel, Arnold Schoenberg Choir", MV("10229753141708"), "concert","mv","$13 to $149","Sat Dec 19","19:00","3h10",9],
+ ["Dancenight, Tanzschule Wopienka", WO(98723), "dance","wop","","Sat Dec 19","19:00","3h",6],
+ ["Camerata Classica, Four Seasons", MV("10229821419109"), "concert","mv","$17 to $91","Sat Dec 19","20:00","2h",5],
+ ["Ausgerechnet Weihnachten, Fritz Karl with Sonare Quartet", MV("10229733502928"), "concert","mv","$9 to $41","Sat Dec 19","20:00","2h",4],
+ ["Vienna Boys Choir, Sunday Mass", "https://www.viennaclassic.com/en/vienna/concert/vienna-boys-choir-at-hofmusikkapelle/z16P9MKr", "concert","hbk","$61 to $80","Sun Dec 20","09:15","about 2h",8],
+ ["Tonkünstler Orchestra, Jussen brothers (matinee)", MV("10229765572652"), "concert","mv","$10 to $74","Sun Dec 20","15:30","1h45",7],
+ ["Bach Christmas Oratorio, Vienna Symphony", "https://konzerthaus.at/en/program-and-tickets/wiener-symphoniker-wiener-singakademie-de-marchi/63698", "concert","kh","$8 to $143","Sun Dec 20","19:00","1h50",9],
+ ["Vienna Philharmonic ensemble, Bruckner and Brahms", MV("10229719673110"), "concert","mv","$13 to $77","Sun Dec 20","19:30","2h",9],
+ ["St. Augustin Choir and Orchestra, Mozart and Rheinberger", MV("10229789927223"), "concert","mv","$22 to $98","Sun Dec 20","19:30","2h",6],
+ ["Chopin Gala, Pietro Massa", MV("10229863760510"), "concert","mv","$11 to $39","Sun Dec 20","19:30","2h30",5],
 ];
 
-const DOW = {12:"Sat",13:"Sun",14:"Mon",15:"Tue",16:"Wed",17:"Thu",18:"Fri",19:"Sat",20:"Sun"};
-const DOW_LONG = {Sat:"Saturday",Sun:"Sunday",Mon:"Monday",Tue:"Tuesday",Wed:"Wednesday",Thu:"Thursday",Fri:"Friday"};
-const CATS = ["concert","opera","ballet","dance"];
-const CAT_LABEL = {concert:"Concerts",opera:"Opera",ballet:"Ballet",dance:"Dance"};
-
-const toMin = s => { const m = s.match(/(\d+)h(\d+)?/); return (+m[1])*60 + (+(m[2]||0)); };
-const fmtEnd = (time, mins) => { const [h,m] = time.split(":").map(Number); const t = h*60+m+mins; return String(Math.floor(t/60)%24).padStart(2,"0")+":"+String(t%60).padStart(2,"0"); };
-
-const EVENTS = RAW.map((r,i) => {
-  const [title,url,cat,ven,lo,hi,day,time,dur,about,fit] = r;
-  const mins = toMin(dur);
-  return { id:i+1, title, url, cat, venue:V[ven][0], venueUrl:V[ven][1], lo, hi, day, time, dur, about, mins, fit,
-    sortDate: day*10000 + +time.replace(":",""), end: fmtEnd(time, mins),
-    hay: (title+" "+V[ven][0]+" "+cat).toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g,"") };
+const EVENTS = RAW.map(([title,url,cat,v,cost,date,time,dur,fit]) => {
+  const d = dur.match(/(\d+)h(\d+)?/);
+  const c = cost.match(/\d+/);
+  return { title,url,cat,venue:V[v][0],venueUrl:V[v][1],cost,date,time,dur,fit,
+    day:+date.slice(-2), mins:+d[1]*60+(+(d[2]||0)), lo:c?+c[0]:Infinity };
 });
-
-// ---------- state ----------
-const store = {
-  get(k,d){ try{ const v = localStorage.getItem(k); return v ? JSON.parse(v) : d; }catch(e){ return d; } },
-  set(k,v){ try{ localStorage.setItem(k, JSON.stringify(v)); }catch(e){} }
-};
-const state = {
-  q:"", cats:new Set(), days:new Set(), sort:"date", dir:"asc",
-  picks:new Set(store.get("vienna-picks", [])), onlyPicked:false, sharedOnly:null,
-};
-const savePicks = () => store.set("vienna-picks", [...state.picks]);
-
-// shared link
-const shared = (() => {
-  const m = location.hash.match(/picks=([\d,]+)/);
-  if(!m) return null;
-  const ids = m[1].split(",").map(Number).filter(n => EVENTS.some(e => e.id===n));
-  return ids.length ? new Set(ids) : null;
-})();
-
-// ---------- render controls ----------
+const CATS = ["concert","opera","ballet","dance"];
+const state = { q:"", cats:new Set(), days:new Set(), sort:"date", dir:1 };
+const DOW = d => EVENTS.find(e=>e.day===d).date.slice(0,3);
+const norm = t => t.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g,"");
 const $ = s => document.querySelector(s);
-function renderStats(){
-  const cheapest = Math.min(...EVENTS.filter(e=>e.lo!=null).map(e=>e.lo));
-  $("#stats").innerHTML = [
-    [EVENTS.length,"events"],[9,"nights"],[new Set(EVENTS.map(e=>e.venue)).size,"venues"],["$"+cheapest,"cheapest seat"]
-  ].map(([b,s])=>`<div class="stat"><b>${b}</b><span>${s}</span></div>`).join("");
-}
+const esc = s => String(s).replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+
+const KEY = {
+  title:e=>e.title.toLowerCase(), cat:e=>e.cat, venue:e=>e.venue, cost:e=>e.lo,
+  date:e=>e.day*10000 + +e.time.replace(":",""), time:e=>e.time, dur:e=>e.mins, fit:e=>e.fit,
+};
+
 function renderCats(){
-  const counts = Object.fromEntries(CATS.map(c=>[c, EVENTS.filter(e=>e.cat===c).length]));
+  const n = c => EVENTS.filter(e=>e.cat===c).length;
   $("#cats").innerHTML = `<span class="label">Type</span>` +
-    `<button class="chip" data-cat="" aria-pressed="${state.cats.size===0}">All <span class="n">${EVENTS.length}</span></button>` +
-    CATS.map(c=>`<button class="chip" data-cat="${c}" style="--c:var(--${c})" aria-pressed="${state.cats.has(c)}"><span class="dot"></span>${CAT_LABEL[c]} <span class="n">${counts[c]}</span></button>`).join("");
+    `<button class="chip" data-cat="" aria-pressed="${!state.cats.size}">All <span class="n">${EVENTS.length}</span></button>` +
+    CATS.map(c=>`<button class="chip" data-cat="${c}" style="--c:var(--${c})" aria-pressed="${state.cats.has(c)}"><span class="dot"></span>${c[0].toUpperCase()+c.slice(1)} <span class="n">${n(c)}</span></button>`).join("");
 }
 function renderDays(){
   const days = [...new Set(EVENTS.map(e=>e.day))];
   $("#days").innerHTML = `<span class="label">Day</span>` +
-    `<button class="chip day" data-day="" aria-pressed="${state.days.size===0}"><small>All</small><b>9</b></button>` +
-    days.map(d=>`<button class="chip day" data-day="${d}" aria-pressed="${state.days.has(d)}"><small>${DOW[d]}</small><b>${d}</b></button>`).join("");
-}
-
-// ---------- filter / sort ----------
-function visible(){
-  const q = state.q.toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g,"").trim();
-  let list = EVENTS.filter(e =>
-    (!q || q.split(/\s+/).every(w => e.hay.includes(w))) &&
-    (!state.cats.size || state.cats.has(e.cat)) &&
-    (!state.days.size || state.days.has(e.day)) &&
-    (!state.onlyPicked || state.picks.has(e.id)) &&
-    (!state.sharedOnly || state.sharedOnly.has(e.id)));
-  const k = state.sort, s = state.dir==="asc" ? 1 : -1;
-  const val = e => k==="date" ? e.sortDate : k==="fit" ? e.fit : k==="cost" ? (e.lo ?? Infinity)
-                : k==="dur" ? e.mins : k==="cat" ? e.cat : e.title.toLowerCase();
-  list.sort((a,b) => {
-    const va = val(a), vb = val(b);
-    if(va===Infinity && vb!==Infinity) return 1;
-    if(vb===Infinity && va!==Infinity) return -1;
-    return (va<vb?-1:va>vb?1:0)*s || a.sortDate-b.sortDate;
-  });
-  return list;
-}
-
-const esc = s => String(s).replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
-const costText = e => e.lo==null ? "TBA" : e.lo===e.hi ? `$${e.lo}` : `$${e.lo}–$${e.hi}`;
-
-function rowHTML(e){
-  const picked = state.picks.has(e.id);
-  return `<tr class="${picked?"picked":""}">
-    <td class="c-star"><button class="star" data-pick="${e.id}" aria-pressed="${picked}" aria-label="${picked?"Remove from":"Add to"} shortlist: ${esc(e.title)}">${picked?"★":"☆"}</button></td>
-    <td class="c-when when"><b>${e.time}</b><small>${DOW[e.day]} ${e.day} Dec · to ${e.about?"~":""}${e.end}</small></td>
-    <td class="c-ev ev"><a class="title" href="${esc(e.url)}" target="_blank" rel="noopener">${esc(e.title)}</a><br>
-      <a class="venue" href="${esc(e.venueUrl)}" target="_blank" rel="noopener">${esc(e.venue)}</a></td>
-    <td class="c-cat"><span class="cat" style="--c:var(--${e.cat})">${e.cat}</span></td>
-    <td class="c-cost cost ${e.lo==null?"tba na":""}">${costText(e)}</td>
-    <td class="c-dur dur">${e.about?"~":""}${e.dur}</td>
-    <td class="c-fit"><div class="fit" title="Fit ${e.fit} out of 10"><b>${e.fit}</b><span class="bar"><i style="width:${e.fit*10}%"></i></span></div></td>
-  </tr>`;
+    `<button class="chip day" data-day="" aria-pressed="${!state.days.size}"><small>All</small><b>${days.length}</b></button>` +
+    days.map(d=>`<button class="chip day" data-day="${d}" aria-pressed="${state.days.has(d)}"><small>${DOW(d)}</small><b>${d}</b></button>`).join("");
 }
 
 function render(){
-  const list = visible();
-  const byDate = state.sort==="date";
-  let html = "", lastDay = null;
-  for(const e of list){
-    if(byDate && e.day!==lastDay){
-      const n = list.filter(x=>x.day===e.day).length;
-      html += `<tr class="daybreak"><td colspan="7"><div class="dayhead">${DOW_LONG[DOW[e.day]]} ${e.day} December<span>${n} event${n>1?"s":""}</span></div></td></tr>`;
-      lastDay = e.day;
-    }
-    html += rowHTML(e);
-  }
-  $("#rows").innerHTML = html;
-  $("#empty").hidden = list.length>0;
-  $("#count").textContent = list.length===EVENTS.length ? `All ${EVENTS.length} events` : `${list.length} of ${EVENTS.length} events`;
-  $("#pickN").textContent = state.picks.size;
-  $("#onlyPicked").setAttribute("aria-pressed", state.onlyPicked);
-  $("#sortSel").value = `${state.sort}:${state.dir}`;
-  if(![...$("#sortSel").options].some(o=>o.value===$("#sortSel").value)) $("#sortSel").selectedIndex = -1;
-  document.querySelectorAll("th[data-key]").forEach(th=>{
+  const k = KEY[state.sort], tie = KEY.date;
+  const q = norm(state.q).trim();
+  const list = EVENTS.filter(e => (!state.cats.size || state.cats.has(e.cat)) && (!state.days.size || state.days.has(e.day)) &&
+      (!q || q.split(/\s+/).every(w => norm(e.title+" "+e.venue+" "+e.cat).includes(w))))
+    .sort((a,b) => {
+      const x=k(a), y=k(b);
+      if(x===Infinity || y===Infinity) return x===y ? tie(a)-tie(b) : x===Infinity ? 1 : -1;
+      return (x<y?-1:x>y?1:0)*state.dir || tie(a)-tie(b);
+    });
+  $("#rows").innerHTML = list.map(e => `<tr>
+    <td class="c-ev"><a class="title" href="${esc(e.url)}" target="_blank" rel="noopener">${esc(e.title)}</a></td>
+    <td class="c-cat"><span class="cat">${e.cat}</span></td>
+    <td class="c-ven"><a class="venue" href="${esc(e.venueUrl)}" target="_blank" rel="noopener">${esc(e.venue)}</a></td>
+    <td class="c-cost nw">${e.cost}</td>
+    <td>${e.date}</td>
+    <td class="nw">${e.time}</td>
+    <td class="nw">${e.dur}</td>
+    <td class="c-fit nw">${e.fit}</td>
+  </tr>`).join("");
+  document.querySelectorAll("th[data-key]").forEach(th => {
     const on = th.dataset.key===state.sort;
-    th.setAttribute("aria-sort", on ? (state.dir==="asc"?"ascending":"descending") : "none");
-    th.querySelector(".arrow").textContent = on && state.dir==="desc" ? "▼" : "▲";
+    th.setAttribute("aria-sort", on ? (state.dir>0?"ascending":"descending") : "none");
+    th.querySelector(".arrow").textContent = on ? (state.dir>0?"▲":"▼") : "";
   });
-  $("#sharedView").textContent = state.sharedOnly ? "Show everything" : "Show only these";
+  const sv = `${state.sort}:${state.dir>0?"asc":"desc"}`;
+  $("#sortSel").value = sv;
+  if($("#sortSel").value!==sv) $("#sortSel").selectedIndex = -1;
 }
 
-function toast(msg){ const t=$("#toast"); t.textContent=msg; t.classList.add("show"); clearTimeout(toast.t); toast.t=setTimeout(()=>t.classList.remove("show"),2200); }
-
-// ---------- events ----------
-$("#q").addEventListener("input", e => { state.q = e.target.value; render(); });
-$("#sortSel").addEventListener("change", e => { [state.sort,state.dir] = e.target.value.split(":"); render(); });
-document.querySelectorAll("th[data-key] button").forEach(b => b.addEventListener("click", () => {
-  const k = b.parentElement.dataset.key;
-  if(state.sort===k) state.dir = state.dir==="asc"?"desc":"asc";
-  else { state.sort = k; state.dir = (k==="fit") ? "desc" : "asc"; }
-  render();
-}));
 $("#cats").addEventListener("click", e => {
   const b = e.target.closest("[data-cat]"); if(!b) return;
   const c = b.dataset.cat;
   if(!c) state.cats.clear(); else state.cats.has(c) ? state.cats.delete(c) : state.cats.add(c);
   renderCats(); render();
 });
+document.querySelectorAll("th[data-key] button").forEach(b => b.addEventListener("click", () => {
+  const k = b.parentElement.dataset.key;
+  if(state.sort===k) state.dir *= -1; else { state.sort = k; state.dir = k==="fit" ? -1 : 1; }
+  render();
+}));
+
 $("#days").addEventListener("click", e => {
   const b = e.target.closest("[data-day]"); if(!b) return;
   const d = +b.dataset.day;
   if(!d) state.days.clear(); else state.days.has(d) ? state.days.delete(d) : state.days.add(d);
   renderDays(); render();
 });
-$("#rows").addEventListener("click", e => {
-  const b = e.target.closest("[data-pick]"); if(!b) return;
-  const id = +b.dataset.pick;
-  state.picks.has(id) ? state.picks.delete(id) : state.picks.add(id);
-  savePicks(); render();
-});
-$("#onlyPicked").addEventListener("click", () => { state.onlyPicked = !state.onlyPicked; render(); });
-$("#share").addEventListener("click", async () => {
-  if(!state.picks.size){ toast("Star a few events first"); return; }
-  const ids = [...state.picks].sort((a,b)=>a-b).join(",");
-  const url = location.origin + location.pathname + "#picks=" + ids;
-  try{ await navigator.clipboard.writeText(url); toast("Link copied. Send it to the group."); }
-  catch(err){ prompt("Copy this link:", url); }
-});
-$("#reset").addEventListener("click", () => {
-  state.q=""; $("#q").value=""; state.cats.clear(); state.days.clear(); state.onlyPicked=false; state.sharedOnly=null;
-  renderCats(); renderDays(); render();
-});
+$("#q").addEventListener("input", e => { state.q = e.target.value; render(); });
+$("#sortSel").addEventListener("change", e => { const [k,d] = e.target.value.split(":"); state.sort = k; state.dir = d==="asc"?1:-1; render(); });
 
-if(shared){
-  $("#sharedBanner").classList.add("show");
-  $("#sharedText").innerHTML = `<b>Someone shared a shortlist</b> with ${shared.size} event${shared.size>1?"s":""}.`;
-  $("#sharedView").addEventListener("click", () => { state.sharedOnly = state.sharedOnly ? null : shared; render(); });
-  $("#sharedMerge").addEventListener("click", () => {
-    shared.forEach(id=>state.picks.add(id)); savePicks(); render(); toast(`Added to your shortlist`);
-  });
-  $("#sharedDismiss").addEventListener("click", () => {
-    $("#sharedBanner").classList.remove("show"); state.sharedOnly=null;
-    history.replaceState(null,"",location.pathname); render();
-  });
-  state.sharedOnly = shared;
-}
-
-renderStats(); renderCats(); renderDays(); render();
+renderCats(); renderDays(); render();
 </script>
 </body>
 </html>
