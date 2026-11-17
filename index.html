@@ -85,12 +85,18 @@ tbody td{padding:14px 10px;border-bottom:1px solid var(--row);vertical-align:mid
   .hero-inner{padding:0 16px 28px}
   main{padding:20px 16px 60px}
   thead{display:none}
-  table,tbody,tr,td{display:block;width:100%}
-  tbody tr{border-bottom:1px solid var(--row);padding:14px 0;display:grid;grid-template-columns:1fr auto;gap:4px 12px}
-  tbody td{border:0;padding:0}
-  td.c-ev{grid-column:1 / -1}
-  td.c-ven{grid-column:1 / -1;margin-bottom:4px}
-  td.c-cat,td.c-cost,td.c-fit{text-align:right}
+  table,tbody{display:block;width:100%}
+  tbody tr{display:flex;flex-wrap:wrap;align-items:center;gap:6px 14px;border-bottom:1px solid var(--row);padding:16px 0}
+  tbody td{display:block;border:0;padding:0}
+  td.c-ev{order:1;flex:1 1 100%}
+  td.c-ven{order:2;flex:1 1 100%;margin-bottom:2px}
+  td.c-date{order:3}
+  td.c-time{order:4}
+  td.c-dur{order:5;color:var(--muted)}
+  td.c-cost{order:6}
+  td.c-cat{order:7;margin-left:auto}
+  td.c-fit{order:8}
+  td.c-fit::after{content:"/10";color:var(--muted)}
 }
 </style>
 </head>
@@ -232,9 +238,9 @@ function render(){
     <td class="c-cat"><span class="cat">${e.cat}</span></td>
     <td class="c-ven"><a class="venue" href="${esc(e.venueUrl)}" target="_blank" rel="noopener">${esc(e.venue)}</a></td>
     <td class="c-cost nw">${e.cost}</td>
-    <td>${e.date}</td>
-    <td class="nw">${e.time}</td>
-    <td class="nw">${e.dur}</td>
+    <td class="c-date">${e.date}</td>
+    <td class="c-time nw">${e.time}</td>
+    <td class="c-dur nw">${e.dur}</td>
     <td class="c-fit nw">${e.fit}</td>
   </tr>`).join("");
   document.querySelectorAll("th[data-key]").forEach(th => {
